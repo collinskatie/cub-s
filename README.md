@@ -17,6 +17,10 @@ More details on our work can be found at our [project page](https://sites.google
 
 A script highlighting data loading will be released shortly; however, as a start, one can use `CUB-S` via .... We do encourage playing with other ways to use CUB-S as well!
 
+`cub_s_labels.json` is structured as follows: 
+* Each key is the id of an image in the `CUB` test set. These integers match directly with the test set from ....
+* Keys maps to lists of soft labels for all concepts for that image. Each image is associated with 28 different concepts. Some images have been labeled by multiple people; most were only labeled by one person. In the case of many labels, the lists .... 
+
 ## Raw Data Format
 
 The columns in our raw_data (`raw_cub-s_human_data.csv`) represent: 
