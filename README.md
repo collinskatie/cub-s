@@ -50,12 +50,11 @@ time_elapsed,subject,concept_group,filename,evalAttrUncs,img_id
 If you use our data, please consider the following bibtex entry: 
 
 ```
-@inproceedings{softLabelElicitingLearning2022,
-  title={Eliciting and Learning with Soft Labels from Every Annotator},
-  author={Collins, Katherine M and Bhatt, Umang and Weller, Adrian},
-  booktitle={Proceedings of the AAAI Conference on Human Computation and Crowdsourcing (HCOMP)},
-  volume={10},
-  year={2022}
+@inproceedings{collins2023humanConceptUnc,
+      title={Human Uncertainty in Concept-Based AI Systems}, 
+      author={Katherine M. Collins and Matthew Barker and Mateo Espinosa Zarlenga and Naveen Raman and Umang Bhatt and Mateja Jamnik and Ilia Sucholutsky and Adrian Weller and Krishnamurthy Dvijotham},
+      year={2023},
+      archivePrefix={AIES},
 }
 ```
 
