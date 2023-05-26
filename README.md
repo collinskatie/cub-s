@@ -19,24 +19,24 @@ A script highlighting data loading will be released shortly; however, as a start
 
 `cub_s_labels.json` is structured as follows: 
 * Each key is the id of an image in the `CUB` test set. These integers match directly with the test set from ....
-* Keys maps to lists of soft labels for all concepts for that image. Each image is associated with 28 different concepts. Some images have been labeled by multiple people; most were only labeled by one person. In the case of many labels, the lists .... 
+* Keys maps to lists of soft labels flattened for all concepts for that image. Each participant labeled all concepts for a single image. 
+Some images have been labeled by multiple people; most were only labeled by one person. In the case of many labels, the outer lists represent the label extracted per annotator.
 
-## Raw Data Format
+The flattened concepts are of length 312, corresponding to all original binary concepts. [Koh et al](https://github.com/yewsiang/ConceptBottleneck) filter these down to 112, but you could explore using all concepts (as humans do express some probability over many of them!) In this work though, we apply the same filtering, see [indices here](https://github.com/yewsiang/ConceptBottleneck/blob/master/CUB/generate_new_data.py#L71).
 
-The columns in our raw_data (`raw_cub-s_human_data.csv`) represent: 
+If the json is too confusing, we recommend starting with the less processed `raw_cub-s_human_data.csv`, which has columns representing the following: 
 time_elapsed,subject,concept_group,filename,evalAttrUncs,img_id
 * subject: unique id randomly generated for a given annotator.
+* evalAttrsUncs: 
+* concept_group: 
+* img_id: .... ; this corresponds to the id in the `json`. 
+* filename: 
 * response: annotations provided for a given image (most prob class w/ prob, second prob class w/ optional prob, any impossible classes). note, the final page shown to each annotator was a debrief questionarre; for this page, you can see comments to the questions included below. 
 * img_id: integer into the original CIFAR-10 ordered test set for the image show.
 * label: category assigned to the image according to the [CIFAR-10 test set](https://www.cs.toronto.edu/~kriz/cifar.html).
 * filename: readable tag for image shown: "cifar10_train_{img_id}_{img_label}.png" note, these are from the "test" set. we called these "train" because we were training on the labels, but will soon change this tag, and downstream code which uses the filename, to avoid confusion. 
 * rt: time spent (msec) on a given page, by an annotator.
-* time_elapsed: total time (msec) an annotator has taken on the experiment so far.
-* task: indicates the type of the screen shown to the annotator. "spec conf" is the soft label elicitation; "rerun_spec_conf" are repeat trials of earlier soft label elicitations (same screen type). 
-* trial_index: the order of the trials/pages the annotator saw.
-* condition: batch of images annotator was allocated to.
-* trial_type: the [jsPsych](https://www.jspsych.org/6.3/) screen-type shown on a given page.
-* view_history: meta-data on annotator viewing instructions.
+* time_elapsed: total time (msec) an annotator has taken on the experiment so far; note: instruction reading time is included from the first annotation.
 
 ## Citing
 
