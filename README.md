@@ -7,7 +7,7 @@ More details on our work can be found at our [project page](https://sites.google
 ## Repository Contents
 
 * `cub-s_labels.json`: extracted soft labels per individual annotator, and per bird image and per concept. Parsing details below.
-* `cub-s_human_data.csv`: de-anonymized lightly-processed annotation information collected during crowdsourcing on [Prolific](https://app.prolific.co/). [Pavlovia](https://pavlovia.org/) was used as a backend. Details on column information are included below. We make code available for the interface platform, UElic, available shortly. When uploaded, the interface code will be hosted [here](). 
+* `cub-s_human_data.csv`: de-anonymized lightly-processed annotation information collected during crowdsourcing on [Prolific](https://app.prolific.co/). [Pavlovia](https://pavlovia.org/) was used as a backend. Details on column information are included below. We make code available for the interface platform, UElic, available shortly. When uploaded, the interface code will be hosted [here](https://sites.google.com/view/human-concept-uncertainty?usp=sharing). 
 * `construct_labels.ipynb`: example script to construct soft labels from elicited information. 
 * `label_construction_utils.py`: helper functions to construct soft labels.
 * We will include a custom dataloader shortly. For the time being, we recommend reading in the ``CIFAR-10`` test set without shuffling, and swapping in our labels for the corresponding examples (i.e., the example index key in the `json` files). 
