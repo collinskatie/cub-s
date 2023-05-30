@@ -8,14 +8,10 @@ More details on our work can be found at our [project page](https://sites.google
 
 * `cub-s_labels.json`: extracted soft labels per individual annotator, and per bird image and per concept. Parsing details below.
 * `cub-s_human_data.csv`: de-anonymized lightly-processed annotation information collected during crowdsourcing on [Prolific](https://app.prolific.co/). [Pavlovia](https://pavlovia.org/) was used as a backend. Details on column information are included below. We make code available for the interface platform, UElic, available shortly. When uploaded, the interface code will be hosted [here](https://github.com/collinskatie/u-elic). 
-* `construct_labels.ipynb`: example script to construct soft labels from elicited information. 
-* `label_construction_utils.py`: helper functions to construct soft labels.
-* We will include a custom dataloader shortly. For the time being, we recommend reading in the ``CUB`` test set without shuffling, and swapping in our labels for the corresponding examples (i.e., the example index key in the `json` files). 
-* `process_data.ipynb`: notebook illustrating how raw data is parsed (converting `raw_human_data.csv` to `human_soft_label_data.json`).
 
 ## Mapping Soft Labels to CUB
 
-*A script highlighting data loading will be released shortly*; however, as a start, we include details on `CUB-S` below. We encourage downloading and using a dataloader similar to the original [Concept Bottleneck Molde (CBM)](https://github.com/yewsiang/ConceptBottleneck/tree/master/CUB) repository. They have a [preprocessed version of CUB images and associated concept attributes and species labels](https://worksheets.codalab.org/worksheets/0x362911581fcd4e048ddfd84f47203fd2), which you can download. You can override the [attribute labels](https://github.com/yewsiang/ConceptBottleneck/blob/master/CUB/dataset.py#L74) with our loaded in soft labels. Recall, at present `CUB-S` is a relabeling of a subset of the test set.
+*A cleaned script highlighting data loading will be released shortly*; if you need access sooner, please reach out to the authors (see Contact below). For now, as a start, we include details on the `CUB-S` soft labels below. We encourage downloading and using a dataloader similar to the original [Concept Bottleneck Molde (CBM)](https://github.com/yewsiang/ConceptBottleneck/tree/master/CUB) repository. They have a [preprocessed version of CUB images and associated concept attributes and species labels](https://worksheets.codalab.org/worksheets/0x362911581fcd4e048ddfd84f47203fd2), which you can download. You can override the [attribute labels](https://github.com/yewsiang/ConceptBottleneck/blob/master/CUB/dataset.py#L74) with our loaded in soft labels. Recall, at present `CUB-S` is a relabeling of a subset of the test set.
 
 `cub_s_labels.json` is structured as follows: 
 * Each key is the id of an image in the `CUB` test set. These integers match directly with the test set from ....
