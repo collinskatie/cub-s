@@ -7,7 +7,7 @@ More details on our work can be found at our [project page](https://sites.google
 ## Repository Contents
 
 * `cub-s_labels.json`: extracted soft labels per individual annotator, and per bird image and per concept. Parsing details below.
-* `cub-s_human_data.csv`: de-anonymized lightly-processed annotation information collected during crowdsourcing on [Prolific](https://app.prolific.co/). [Pavlovia](https://pavlovia.org/) was used as a backend. Details on column information are included below. We make code available for the interface platform, UElic, available shortly. When uploaded, the interface code will be hosted [here](https://github.com/collinskatie/u-elic). 
+* `raw_cub-s_human_data.csv`: de-anonymized lightly-processed annotation information collected during crowdsourcing on [Prolific](https://app.prolific.co/). [Pavlovia](https://pavlovia.org/) was used as a backend. Details on column information are included below. We make code available for the interface platform, UElic, available shortly. When uploaded, the interface code will be hosted [here](https://github.com/collinskatie/u-elic). 
 
 ## Mapping Soft Labels to CUB
 
