@@ -1,6 +1,6 @@
 # CUB-S
 
-We release `CUB-S`, a relabeling of a portion of the [`CUB`]() bird classification image test set with individual soft labels per concept group (e.g., over wing color, beak shape, etc) as part of our upcoming [AIES paper](https://arxiv.org/pdf/2303.12872.pdf). Each participant provided a soft label for all 28 concept groups, following the [original group listing](). The structure of this README is based on a doc from some of the same authors for [`CIFAR-10S` (individual soft labels over CIFAR-10 images)]([https://github.com/jcpeterson/cifar-10h/blob/master/README.md](https://github.com/cambridge-mlg/cifar-10s/tree/master/cifar10s_data)), which is itself based on the repository from [Peterson et al](https://github.com/jcpeterson/cifar-10h/blob/master/README.md).
+We release `CUB-S`, a relabeling of a portion of the [`CUB`](https://www.vision.caltech.edu/datasets/cub_200_2011/) bird classification image test set with individual soft labels per concept group (e.g., over wing color, beak shape, etc) as part of our upcoming [AIES paper](https://arxiv.org/pdf/2303.12872.pdf). Each participant provided a soft label for all 28 concept groups, following the [original group listing](https://worksheets.codalab.org/rest/bundles/0xd013a7ba2e88481bbc07e787f73109f5/contents/blob/attributes/attributes.txt). The structure of this README is based on a doc from some of the same authors for [`CIFAR-10S`] (individual soft labels over CIFAR-10 images)]([https://github.com/jcpeterson/cifar-10h/blob/master/README.md](https://github.com/cambridge-mlg/cifar-10s/tree/master/cifar10s_data)), which is itself based on the repository from [Peterson et al](https://github.com/jcpeterson/cifar-10h/blob/master/README.md).
 
 More details on our work can be found at our [project page](https://sites.google.com/view/human-concept-uncertainty?usp=sharing). 
 
@@ -15,14 +15,14 @@ More details on our work can be found at our [project page](https://sites.google
 
 ## Mapping Soft Labels to CUB
 
-A script highlighting data loading will be released shortly; however, as a start, one can use `CUB-S` via .... We do encourage playing with other ways to use CUB-S as well!
+*A script highlighting data loading will be released shortly*; however, as a start, we include details on `CUB-S` below. We encourage downloading and using a dataloader similar to the original [Concept Bottleneck Molde (CBM)](https://github.com/yewsiang/ConceptBottleneck/tree/master/CUB) repository. They have a [preprocessed version of CUB images and associated concept attributes and species labels](https://worksheets.codalab.org/worksheets/0x362911581fcd4e048ddfd84f47203fd2), which you can download. You can override the [attribute labels](https://github.com/yewsiang/ConceptBottleneck/blob/master/CUB/dataset.py#L74) with our loaded in soft labels. Recall, at present `CUB-S` is a relabeling of a subset of the test set.
 
 `cub_s_labels.json` is structured as follows: 
 * Each key is the id of an image in the `CUB` test set. These integers match directly with the test set from ....
 * Keys maps to lists of soft labels flattened for all concepts for that image. Each participant labeled all concepts for a single image. 
 Some images have been labeled by multiple people; most were only labeled by one person. In the case of many labels, the outer lists represent the label extracted per annotator.
 
-The flattened concepts are of length 312, corresponding to all original binary concepts. [Koh et al](https://github.com/yewsiang/ConceptBottleneck) filter these down to 112, but you could explore using all concepts (as humans do express some probability over many of them!) In this work though, we apply the same filtering, see [indices here](https://github.com/yewsiang/ConceptBottleneck/blob/master/CUB/generate_new_data.py#L71).
+The flattened concepts are of length 312, corresponding to all original binary concepts. [Koh et al](https://github.com/yewsiang/ConceptBottleneck) filter these down to 112, but you could explore using all concepts (as humans do express some probability over many of them!) In this work though, we apply the same filtering, see [indices here](https://github.com/yewsiang/ConceptBottleneck/blob/master/CUB/generate_new_data.py#L71). We do encourage playing with other ways to use CUB-S as well!
 
 If the json is too confusing, we recommend starting with the less processed `raw_cub-s_human_data.csv`, which has columns representing the following: 
 time_elapsed,subject,concept_group,filename,evalAttrUncs,img_id
@@ -53,5 +53,5 @@ If you use our data, please consider the following bibtex entry:
 
 ## Questions?
 
-If you have any questions about `CUB-S` use, elicitation, and/or creation, please feel free to add a GitHub Issue and/or reach out to Katie Collins (`kmc61@cam.ac.uk`) and Matthew Barker (`mrlb3@cam.ac.uk`).
+If you have any questions about `CUB-S` use, elicitation, and/or creation, please do not hesitate to add a GitHub Issue and/or reach out to Katie Collins (`kmc61@cam.ac.uk`) and Matthew Barker (`mrlb3@cam.ac.uk`).
 
