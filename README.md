@@ -11,7 +11,7 @@ More details on our work can be found at our [project page](https://sites.google
 
 ## Mapping Soft Labels to CUB
 
-*A cleaned script highlighting data loading will be released shortly*; if you need access sooner, please reach out to the authors (see Contact below). For now, as a start, we include details on the `CUB-S` soft labels below. We encourage downloading and using a dataloader similar to the original [Concept Bottleneck Molde (CBM)](https://github.com/yewsiang/ConceptBottleneck/tree/master/CUB) repository. They have a [preprocessed version of CUB](https://worksheets.codalab.org/worksheets/0x362911581fcd4e048ddfd84f47203fd2) images and associated concept attributes and species labels, which you can download. You can override the [attribute labels](https://github.com/yewsiang/ConceptBottleneck/blob/master/CUB/dataset.py#L74) with our loaded in soft labels. Recall, at present `CUB-S` is a relabeling of a subset of the test set.
+*A cleaned script highlighting data loading will be released shortly*; if you need access sooner, please reach out to the authors (see Contact below). For now, as a start, we include details on the `CUB-S` soft labels below. We encourage downloading and using a dataloader similar to the original [Concept Bottleneck Molde (CBM)](https://github.com/yewsiang/ConceptBottleneck/tree/master/CUB) repository. They have a [preprocessed version of CUB](https://worksheets.codalab.org/worksheets/0x362911581fcd4e048ddfd84f47203fd2) images and associated concept attributes and species labels, which you can download; or you can look to the [Concept Embedding Model (CEM)](https://github.com/mateoespinosa/cem/tree/main/cem/data/CUB200/class_attr_data_10) repository; we specifically used these pkl files. You can override the [attribute labels](https://github.com/yewsiang/ConceptBottleneck/blob/master/CUB/dataset.py#L74) with our loaded in soft labels. Recall, at present `CUB-S` is a relabeling of a subset of the test set.
 
 `cub_s_labels.json` is structured as follows: 
 * Each key is the id of an image in the `CUB` test set. These integers match directly with the test set from ....
@@ -21,16 +21,12 @@ Some images have been labeled by multiple people; most were only labeled by one 
 The flattened concepts are of length 312, corresponding to all original binary concepts. [Koh et al](https://github.com/yewsiang/ConceptBottleneck) filter these down to 112, but you could explore using all concepts (as humans do express some probability over many of them!) In this work though, we apply the same filtering, see [indices here](https://github.com/yewsiang/ConceptBottleneck/blob/master/CUB/generate_new_data.py#L71). We do encourage playing with other ways to use CUB-S as well!
 
 If the json is too confusing, we recommend starting with the less processed `raw_cub-s_human_data.csv`, which has columns representing the following: 
-time_elapsed,subject,concept_group,filename,evalAttrUncs,img_id
 * subject: unique id randomly generated for a given annotator.
-* evalAttrsUncs: 
-* concept_group: 
-* img_id: .... ; this corresponds to the id in the `json`. 
-* filename: 
-* response: annotations provided for a given image (most prob class w/ prob, second prob class w/ optional prob, any impossible classes). note, the final page shown to each annotator was a debrief questionarre; for this page, you can see comments to the questions included below. 
-* img_id: integer into the original CIFAR-10 ordered test set for the image show.
+* concept_group: the concept group name being annotated
+* evalAttrsUncs: soft labels provided by the annotator for the particular concept; each annotation is between 0 and 100. If an attribute is not included, then the annotator did not select it from the checkbox option (we consider these as being 0; i.e., not present / possible / "off"). 
+* img_id: integer corresponding to the id in the `json`, and the CUB test set [pkl](https://github.com/mateoespinosa/cem/tree/main/cem/data/CUB200/class_attr_data_10) file. 
+* filename: original CUB image filename, as per the test set pkl file. 
 * label: category assigned to the image according to the [CIFAR-10 test set](https://www.cs.toronto.edu/~kriz/cifar.html).
-* filename: readable tag for image shown: "cifar10_train_{img_id}_{img_label}.png" note, these are from the "test" set. we called these "train" because we were training on the labels, but will soon change this tag, and downstream code which uses the filename, to avoid confusion. 
 * rt: time spent (msec) on a given page, by an annotator.
 * time_elapsed: total time (msec) an annotator has taken on the experiment so far; note: instruction reading time is included from the first annotation.
 
